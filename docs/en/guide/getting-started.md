@@ -27,7 +27,7 @@ Select the required file for editing in the `docs/components/` directory.
 ## Recommended way to make changes to the documentation
 
 ::: info INFO
-For the recommended way, you will need git skills (clone, fetch, add, commit, push), as well as the **[pnpm](https://pnpm.io/installation)** package manager installed on your computer: dependencies are locked in `pnpm-lock.yaml`.
+For the recommended way, you will need git skills (clone, fetch, add, commit, push), as well as the **[pnpm](https://pnpm.io/installation)** package manager version 10 or later installed on your computer: it switches to the version from `package.json` → `packageManager` by itself, and dependencies are locked in `pnpm-lock.yaml`.
 Knowledge and skills of working with Vue are not required.
 :::
 
