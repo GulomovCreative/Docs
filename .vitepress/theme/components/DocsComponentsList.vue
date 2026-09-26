@@ -20,16 +20,18 @@ const query = ref<string>('')
 const components = computed<ComponentData[]>(() => {
   let filtered: ComponentData[] = site.value.themeConfig.components
 
-  if (props.dependency) {
-    filtered = filtered.filter(component => component.dependencies?.includes(props.dependency))
+  const { dependency, category, excludeCategory } = props
+
+  if (dependency) {
+    filtered = filtered.filter(component => component.dependencies?.includes(dependency))
   }
 
-  if (props.category) {
-    filtered = filtered.filter(component => component.categories?.includes(props.category))
+  if (category) {
+    filtered = filtered.filter(component => component.categories?.includes(category))
   }
 
-  if (props.excludeCategory) {
-    filtered = filtered.filter(component => !component.categories?.includes(props.excludeCategory))
+  if (excludeCategory) {
+    filtered = filtered.filter(component => !component.categories?.includes(excludeCategory))
   }
 
   if (query.value) {

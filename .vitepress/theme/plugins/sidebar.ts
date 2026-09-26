@@ -32,7 +32,7 @@ export default class DocsSidebar {
     const entries = fg.sync(['docs/faq/**/*.md', '!docs/faq/index.md'])
 
     return Object.entries(faqCategories).map(([category, text]) => {
-      const articles = entries.filter(path => path.match(/^docs\/faq\/(.*)\//i)[1] === category)
+      const articles = entries.filter(path => path.match(/^docs\/faq\/(.*)\//i)?.[1] === category)
       const items = articles.map(path => DocsSidebar.getData(path))
 
       return {
@@ -84,7 +84,7 @@ export default class DocsSidebar {
     }
 
     if (items) {
-      output.collapsed = options.collapsed === null || options.collapsed === undefined || options.collapsed
+      output.collapsed = options?.collapsed ?? true
       output.items = DocsSidebar.generateSidebarItem(items, link)
     }
 

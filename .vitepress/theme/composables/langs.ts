@@ -1,6 +1,7 @@
 import { computed } from 'vue'
 import { useData } from 'vitepress'
 import { ensureStartingSlash } from '../utils'
+import type { ComponentData } from '../plugins/component'
 import { getFlatSideBarLinks, getSidebar } from 'vitepress/dist/client/theme-default/support/sidebar'
 
 export function useLangs({
@@ -70,14 +71,15 @@ export function useLangs({
         }
       }
 
-      if (!page.value.component) {
+      const current = page.value.component
+      if (!current) {
         return {
           text: value.label,
           link: rootLink,
         }
       }
 
-      const component = themeConfig.components.find(component => component.title === page.value.component.title)
+      const component = themeConfig.components.find((component: ComponentData) => component.title === current.title)
       if (!component) {
         return {
           text: value.label,
